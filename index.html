@@ -118,11 +118,11 @@
     
     Numerous Diffusion Models(DMs) distillation methods have recently been proposed to reduce the computational overhead associated with multi-step inference.
   However, these methods either suffer from performance degradation when strictly simulating the original ODE trajectory or produce undesirable results in alternative output domains when attempting to reformulate a more efficient trajectory.
-  In this work, we synergistically combine trajectory simulation and reformulation methods to achieve Hyper-SD, leveraging their complementary strengths.
-  Firstly, we <b><i>Accelerated</i></b> DMs by introducing a timesteps-segment method to progressively perform consistency distillation, which more precisely maintains the original ODE trajectory by obtaining an intermediate state between the score-based model and the consistency distilled model.
-  Secondly, we <b><i>Boosted</i></b> the distilled model by incorporating human feedback learning (RLHF) to compensate for the loss during acceleration and even surpass the performance of the original DMs.
-  Thirdly, we <b><i>Completed</i></b> our model by incorporating the score-distillation to achieve the ideal all-timesteps consistency.
-  Lastly, we <b><i>Flexibled</i></b> our methods by training Low-Rank Adaptor(LoRA) in all experiments.
+  In this work, we synergistically combine trajectory simulation and reformulation methods to achieve <b><i><span style="color: red;">Hyper-SD</span></i></b>, leveraging their complementary strengths.
+  Firstly, we <b>Accelerated</b> DMs by introducing a timesteps-segment method to progressively perform consistency distillation, which more precisely maintains the original ODE trajectory by obtaining an intermediate state between the score-based model and the consistency distilled model.
+  Secondly, we <b>Boosted</b> the distilled model by incorporating human feedback learning (RLHF) to compensate for the loss during acceleration and even surpass the performance of the original DMs.
+  Thirdly, we <b>Completed</b> our model by incorporating the score-distillation to achieve the ideal all-timesteps consistency.
+  Lastly, we <b>Flexibled</b> our methods by training Low-Rank Adaptor(LoRA) in all experiments.
   Extensive experiments and user studies demonstrated that Hyper-SD achieved the new State-of-the-Art for both SDXL and SD15 from 1 to 8 steps inference.
 
    </p>
