@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hyper-SD: Trajectory Segmented Consistency Model for Efficient Image Synthesis</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+</head>
+
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+      </div>
+      <div class="container has-text-centered">
+        <h1 class="title is-1 publication-title">
+          Hyper-SD: 
+        </h1>
+        <h3 class="title is-3 publication-title">
+          Trajectory Segmented Consistency Model for Efficient Image Synthesis
+        </h3>
+        <div class="is-size-5 publication-authors">
+          <div class="author-block"><a href="https://scholar.google.com/citations?user=C_6JH-IAAAAJ&hl=zh-CN&oi=ao">Ren Yuxi</a>, </div>
+          <div class="author-block"><a href="https://scholar.google.com/citations?user=JP14UGgAAAAJ&hl=zh-CN&oi=ao">Xia Xin</a>, </div>
+          <div class="author-block"><a href="https://scholar.google.com/citations?user=C_6JH-IAAAAJ&hl=zh-CN&oi=ao">Lu Yanzuo</a>, </div>
+          <div class="author-block"><a href="https://scholar.google.com/citations?user=QmdyVQ0AAAAJ&hl=en">Zhang Jiacheng</a>,</div>
+
+          <div class="author-block"><a href="https://scholar.google.com/citations?user=MxvLqLcAAAAJ&hl=zh-CN&oi=ao">Wu Jie</a>,</div>
+
+
+          <div class="author-block"><a href="https://scholar.google.com/citations?hl=zh-CN&user=Z-0EqtgAAAAJ">Xie Pan</a>,</div>
+
+          <div class="author-block">Wang Xin, </div>
+
+
+          <div class="author-block"><a href="https://scholar.google.com/citations?hl=zh-CN&user=CVkM9TQAAAAJ">Xiao Xuefeng</a>*†</div>
+
+
+                  
+        </div>
+
+        <div class="is-size-5 publication-authors">
+          <span class="author-block">ByteDance Inc.</span><br>
+          <span class="author-block">&nbsp&nbsp<sup>*</sup>Corresponding Author &nbsp&nbsp<sup>†</sup>Project Lead</span>
+        </div>
+
+        <div class="column has-text-centered">
+          <div class="publication-links">
+          
+            <!-- arxiv link -->
+            <span class="link-block">
+              <a href=""
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                </span>
+                <span>arXiv</span>
+              </a>
+            </span>
+      
+            <!-- Model Link. -->
+            <span class="link-block">
+              <a href=""
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#ffffff" d="M234.5 5.7c13.9-5 29.1-5 43.1 0l192 68.6C495 83.4 512 107.5 512 134.6V377.4c0 27-17 51.2-42.5 60.3l-192 68.6c-13.9 5-29.1 5-43.1 0l-192-68.6C17 428.6 0 404.5 0 377.4V134.6c0-27 17-51.2 42.5-60.3l192-68.6zM256 66L82.3 128 256 190l173.7-62L256 66zm32 368.6l160-57.1v-188L288 246.6v188z"/></svg>
+                </span>
+                <span>Model Checkpoints</span>
+              </a>
+            </span>
+            <!-- Data Link. -->
+            <span class="link-block">
+              <a href=""
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#ffffff" d="M448 80v48c0 44.2-100.3 80-224 80S0 172.2 0 128V80C0 35.8 100.3 0 224 0S448 35.8 448 80zM393.2 214.7c20.8-7.4 39.9-16.9 54.8-28.6V288c0 44.2-100.3 80-224 80S0 332.2 0 288V186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6V432c0 44.2-100.3 80-224 80S0 476.2 0 432V346.1z"/></svg>
+                </span>
+                <span>Demo</span>
+              </a>
+            </span>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h2 class="subtitle has-text-justified">
+        <figure style="width: 100%;">
+          <a href="assets/figures/overview.png">
+              <img width="100%" src="static/images/hypersd_teaser.png" />
+          </a>
+        </figure>
+      </h2>
+    </div>
+  </div>
+ 
+</div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+        <h2 class="title is-2, columns is-centered">Abstract</h2>
+      <br>
+      
+    </div>
+  </div>
+ 
+    
+  <p class="content has-text-justified">
+    <b>
+      Numerous Diffusion Models(DMs) distillation methods have recently been proposed to reduce the computational overhead associated with multi-step inference.
+      However, these methods either suffer from performance degradation when strictly simulating the original ODE trajectory or produce undesirable results in alternative output domains when attempting to reformulate a more efficient trajectory.
+      In this work, we synergistically combine trajectory simulation and reformulation methods to achieve Hyper-SD, leveraging their complementary strengths.
+      Firstly, we <b><i>Accelerated</i></b> DMs by introducing a timesteps-segment method to progressively perform consistency distillation, which more precisely maintains the original ODE trajectory by obtaining an intermediate state between the score-based model and the consistency distilled model.
+      Secondly, we <b><i>Boosted</i></b> the distilled model by incorporating human feedback learning (RLHF) to compensate for the loss during acceleration and even surpass the performance of the original DMs.
+      Thirdly, we <b><i>Completed</i></b> our model by incorporating the score-distillation to achieve the ideal all-timesteps consistency.
+      Lastly, we <b><i>Flexibled</i></b> our methods by training Low-Rank Adaptor(LoRA) in all experiments.
+      
+      
+      Hyper-SD stands out as the pioneering endeavor that provides plugins encompassing DDPM-based trajectory acceleration and the ideal all-time consistency (including one-step inference) for both SDXL and SD15.
+      </b> 
+   </p>
+</div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+        <h2 class="title is-2, columns is-centered">Pipeline</h2>
+      <br>
+      <h2 class="subtitle has-text-justified">
+        <figure style="width: 100%;">
+          <a href="assets/figures/overview.png">
+              <img width="100%" src="static/images/hypersd_pipeline.png" />
+          </a>
+        </figure>
+      </h2>
+    </div>
+  </div>
+  <p class="content has-text-justified">
+    <b>HyperSD</b> 
+   </p>
+</div>
+</section>
+
+
+
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Experiment</h2>
+        
+        <div class="content has-text-justified">
+          <img src="static/images/hypersd_sd15_results.png" />
+        </div>
+        <p class="content has-text-justified">
+          HyperSD accelerate the generation on SD-15 model.
+        </p>
+
+           
+        <div class="content has-text-justified">
+          <img src="static/images/hypersd_sdxl_results.png" />
+        </div>
+        <p class="content has-text-justified">
+          HyperSD accelerate the generation on SDXL model.
+        </p>
+
+        <div class="content has-text-justified">
+          <img src="static/images/hypersd_gsb.png" />
+        </div>
+        <p class="content has-text-justified">
+          HyperSD exhibits a remarkable superiority over existing methods that concentrate on acceleration and obtain more user preference on both SD1.5 and SDXL architectures.
+        </p>
+       
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container content is-max-desktop">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{ren2024hypersd,
+      title={Hyper-SD: Trajectory Segmented Consistency Model for Efficient Image Synthesis}, 
+      author={Ren Yuxi, Xia Xin, Lu Yanzuo, Jiacheng, Wu Jie, Xie Pan, Wang Xin, Xiao Xuefeng},
+      year={2024},
+      journal={arXiv:2403.09535},
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://arxiv.org/pdf/2401.04468.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <div class="content">
+          <p>
+             The source code of this webpage is based on the <a href="https://github.com/nerfies/nerfies.github.io/"> Nerfies</a> project webpage.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="./static/slick/slick.min.js"></script>
+</body>
+</html>
