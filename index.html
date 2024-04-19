@@ -121,24 +121,23 @@
  
     
   <p class="content has-text-justified">
-    <b>
-      Numerous Diffusion Models(DMs) distillation methods have recently been proposed to reduce the computational overhead associated with multi-step inference.
-      However, these methods either suffer from performance degradation when strictly simulating the original ODE trajectory or produce undesirable results in alternative output domains when attempting to reformulate a more efficient trajectory.
-      In this work, we synergistically combine trajectory simulation and reformulation methods to achieve Hyper-SD, leveraging their complementary strengths.
-      Firstly, we <b><i>Accelerated</i></b> DMs by introducing a timesteps-segment method to progressively perform consistency distillation, which more precisely maintains the original ODE trajectory by obtaining an intermediate state between the score-based model and the consistency distilled model.
-      Secondly, we <b><i>Boosted</i></b> the distilled model by incorporating human feedback learning (RLHF) to compensate for the loss during acceleration and even surpass the performance of the original DMs.
-      Thirdly, we <b><i>Completed</i></b> our model by incorporating the score-distillation to achieve the ideal all-timesteps consistency.
-      Lastly, we <b><i>Flexibled</i></b> our methods by training Low-Rank Adaptor(LoRA) in all experiments.
-      
-      
-      Hyper-SD stands out as the pioneering endeavor that provides plugins encompassing DDPM-based trajectory acceleration and the ideal all-time consistency (including one-step inference) for both SDXL and SD15.
-      </b> 
+    
+    Numerous Diffusion Models(DMs) distillation methods have recently been proposed to reduce the computational overhead associated with multi-step inference.
+  However, these methods either suffer from performance degradation when strictly simulating the original ODE trajectory or produce undesirable results in alternative output domains when attempting to reformulate a more efficient trajectory.
+  In this work, we synergistically combine trajectory simulation and reformulation methods to achieve Hyper-SD, leveraging their complementary strengths.
+  Firstly, we <b><i>Accelerated</i></b> DMs by introducing a timesteps-segment method to progressively perform consistency distillation, which more precisely maintains the original ODE trajectory by obtaining an intermediate state between the score-based model and the consistency distilled model.
+  Secondly, we <b><i>Boosted</i></b> the distilled model by incorporating human feedback learning (RLHF) to compensate for the loss during acceleration and even surpass the performance of the original DMs.
+  Thirdly, we <b><i>Completed</i></b> our model by incorporating the score-distillation to achieve the ideal all-timesteps consistency.
+  Lastly, we <b><i>Flexibled</i></b> our methods by training Low-Rank Adaptor(LoRA) in all experiments.
+  Extensive experiments and user studies demonstrated that Hyper-SD achieved the new State-of-the-Art for both SDXL and SD15 from 1 to 8 steps inference.
+
    </p>
 </div>
 </section>
 
 
-<section class="hero teaser">
+
+<section class="section hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
@@ -154,8 +153,9 @@
       </h2>
     </div>
   </div>
-  <p class="content has-text-justified">
-    <b>HyperSD</b> 
+  <p>
+    HyperSD take the two-stage Progressive Consistency Distillation. The first stage involves consistency distillation in two separate time segments: [0, T/2] and [ T/2 , T] to obtain the two seg-
+      ments consistency ODE. Then, this ODE trajectory is adopted to train a global consistency model in the subsequent stage
    </p>
 </div>
 </section>
@@ -167,21 +167,25 @@
     <div class="columns is-centered has-text-centered">
       <div class="column">
         <h2 class="title is-3">Experiment</h2>
-        
-        <div class="content has-text-justified">
-          <img src="static/images/hypersd_sd15_results.png" />
-        </div>
-        <p class="content has-text-justified">
-          HyperSD accelerate the generation on SD-15 model.
-        </p>
 
-           
         <div class="content has-text-justified">
           <img src="static/images/hypersd_sdxl_results.png" />
         </div>
         <p class="content has-text-justified">
-          HyperSD accelerate the generation on SDXL model.
+          Qualitative comparisons between HyperSD and other LoRA-based acceleration approaches on SDXL architecture.
         </p>
+
+        <div class="content has-text-justified">
+          <img src="static/images/hypersd_sd15_results.png" />
+        </div>
+
+        <p class="content has-text-justified">
+          Qualitative comparisons between HyperSD and other LoRA-based acceleration approaches on SD15 architecture.
+         
+        </p>
+
+           
+      
 
         <div class="content has-text-justified">
           <img src="static/images/hypersd_gsb.png" />
@@ -203,7 +207,7 @@
       title={Hyper-SD: Trajectory Segmented Consistency Model for Efficient Image Synthesis}, 
       author={Ren Yuxi, Xia Xin, Lu Yanzuo, Jiacheng, Wu Jie, Xie Pan, Wang Xin, Xiao Xuefeng},
       year={2024},
-      journal={arXiv:2403.09535},
+      journal={arXiv:2404.03407},
 }</code></pre>
   </div>
 </section>
