@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -41,7 +43,7 @@
 
         <div class="is-size-5 publication-authors">
           <span class="author-block">ByteDance Inc.</span><br>
-          <span class="author-block">&nbsp&nbsp<sup>*</sup>Corresponding Author &nbsp&nbsp<sup></sup>Project Lead</span>
+          <span class="author-block"><sup>*</sup>&nbsp&nbsp<sup></sup>Project Lead</span>
         </div>
 
         <div class="column has-text-centered">
@@ -60,7 +62,7 @@
       
             <!-- Model Link. -->
             <span class="link-block">
-              <a href=""
+              <a href="https://huggingface.co/ByteDance/Hyper-SD"
                  class="external-link button is-normal is-rounded is-dark">
                 <span class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#ffffff" d="M234.5 5.7c13.9-5 29.1-5 43.1 0l192 68.6C495 83.4 512 107.5 512 134.6V377.4c0 27-17 51.2-42.5 60.3l-192 68.6c-13.9 5-29.1 5-43.1 0l-192-68.6C17 428.6 0 404.5 0 377.4V134.6c0-27 17-51.2 42.5-60.3l192-68.6zM256 66L82.3 128 256 190l173.7-62L256 66zm32 368.6l160-57.1v-188L288 246.6v188z"/></svg>
@@ -68,16 +70,22 @@
                 <span>Model Checkpoints</span>
               </a>
             </span>
-            <!-- Data Link. -->
-            <span class="link-block">
-              <a href=""
+          
+             <!-- Demo Link. -->
+             <span class="link-block">
+              <a href="https://huggingface.co/spaces/ByteDance/Hyper-SDXL-1Step-T2I"
                  class="external-link button is-normal is-rounded is-dark">
-                <span class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path fill="#ffffff" d="M448 80v48c0 44.2-100.3 80-224 80S0 172.2 0 128V80C0 35.8 100.3 0 224 0S448 35.8 448 80zM393.2 214.7c20.8-7.4 39.9-16.9 54.8-28.6V288c0 44.2-100.3 80-224 80S0 332.2 0 288V186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6V432c0 44.2-100.3 80-224 80S0 476.2 0 432V346.1z"/></svg>
-                </span>
-                <span>Demo</span>
-              </a>
+                <span>🤗&nbsp;&nbsp;T2I Demo</span>
+                </a>
             </span>
+
+              <!-- Demo Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/spaces/ByteDance/Hyper-SD15-Scribble"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span>🤗&nbsp;&nbsp;Scribble Demo</span>
+                  </a>
+              </span>
           </div>
       </div>
     </div>
@@ -137,14 +145,14 @@
     
   <p class="content has-text-justified">
     
-    Numerous Diffusion Models(DMs) distillation methods have recently been proposed to reduce the computational overhead associated with multi-step inference.
-  However, these methods either suffer from performance degradation when strictly simulating the original ODE trajectory or produce undesirable results in alternative output domains when attempting to reformulate a more efficient trajectory.
-  In this work, we synergistically combine trajectory simulation and reformulation methods to achieve <b><i><span style="color: red;">Hyper-SD</span></i></b>, leveraging their complementary strengths.
-  Firstly, we <b>Accelerated</b> DMs by introducing a timesteps-segment method to progressively perform consistency distillation, which more precisely maintains the original ODE trajectory by obtaining an intermediate state between the score-based model and the consistency distilled model.
-  Secondly, we <b>Boosted</b> the distilled model by incorporating human feedback learning (RLHF) to compensate for the loss during acceleration and even surpass the performance of the original DMs.
-  Thirdly, we <b>Completed</b> our model by incorporating the score-distillation to achieve the ideal all-timesteps consistency.
-  Lastly, we <b>Flexibled</b> our methods by training Low-Rank Adaptor(LoRA) in all experiments.
-  Extensive experiments and user studies demonstrated that Hyper-SD achieved the new State-of-the-Art for both SDXL and SD15 from 1 to 8 steps inference.
+Recently, a series of diffusion-aware distillation algorithms have emerged to alleviate the computational overhead associated with the multi-step inference process of Diffusion Models (DMs). Current distillation techniques often dichotomize into two distinct aspects: i) ODE Trajectory Preservation; and ii) ODE Trajectory Reformulation. However, these approaches suffer from severe performance degradation or domain shifts. To address these limitations, we propose <b><i><span style="color: red;">Hyper-SD</span></i></b>, a novel framework that synergistically amalgamates the advantages of ODE Trajectory Preservation and Reformulation, while maintaining near-lossless performance during step compression.
+Firstly, we introduce Trajectory Segmented Consistency Distillation to progressively perform consistent distillation within pre-defined time-step segments, which facilitates the preservation of the original ODE trajectory from a higher-order perspective.
+Secondly, we incorporate human feedback learning to boost the performance of the model in a low-step regime and mitigate the performance loss incurred by the distillation process. 
+Thirdly, we integrate score distillation to further improve the low-step generation capability of the model and offer the first attempt to leverage a unified LoRA to support the inference process at all steps.
+Extensive experiments and user studies demonstrate that Hyper-SD achieves SOTA performance from 1 to 8 inference steps for both SDXL and SD1.5.
+For example, Hyper-SDXL surpasses SDXL-Lightning by  <b>+0.68</b> in CLIP Score and <b>+0.51</b> in Aes Score in the 1-step inference. 
+
+
 
    </p>
 </div>
@@ -234,7 +242,7 @@
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{ren2024hypersd,
       title={Hyper-SD: Trajectory Segmented Consistency Model for Efficient Image Synthesis}, 
-      author={Ren Yuxi, Xia Xin, Lu Yanzuo, Jiacheng, Wu Jie, Xie Pan, Wang Xin, Xiao Xuefeng},
+      author={Ren Yuxi, Xia Xin, Lu Yanzuo, Zhang Jiacheng, Wu Jie, Xie Pan, Wang Xin, Xiao Xuefeng},
       year={2024},
       journal={arXiv:2404.03407},
 }</code></pre>
